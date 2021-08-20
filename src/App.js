@@ -1,12 +1,17 @@
-import './App.css';
+import './App.scss';
+import Navbar from './layout/Navbar/Navbar';
+import Main from './components/Main';
 
 function App() {
   return (
-    <div>
-      <div>
-        
-      </div>
-    </div>
+    <>
+      <header>
+        <Navbar/>
+      </header>
+      <main>
+        <Main/>
+      </main>
+    </>
   );
 }
 

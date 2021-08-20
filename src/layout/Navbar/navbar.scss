@@ -1,0 +1,22 @@
+nav {
+  box-shadow: 0px 1px 5px 0px lightgrey;
+  padding: 20px 80px;
+  ul:first-child {
+    li:last-child {
+      font-family: "Rampart One", cursive;
+      margin-left: 20px;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    .logo {
+      width: 40px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
