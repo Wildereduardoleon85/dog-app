@@ -15,7 +15,7 @@ nav {
   }
   button:hover {
     color: var(--primary);
-    background: #f0f0f0;
+    background: var(--light-darken1);
     transition: all 0.3s ease;
   }
   ul {

@@ -10,6 +10,7 @@
 
 :root {
   --primary: #01bd56;
+  --light-darken1: #f0f0f0;
 }
 
 ul {
@@ -18,4 +19,36 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  > input[type="checkbox"] {
+    display: none;
+  }
+  .box {
+    width: 1.3rem;
+    height: 1.3rem;
+    border: 1.5px solid black;
+    border-radius: 2px;
+    margin-right: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 1px;
+  }
+
+  .box::after {
+    content: "\2714";
+    color: var(--light-darken1);
+    font-size: 1rem;
+  }
+  > input[type="checkbox"]:checked + .box {
+    background-color: var(--primary);
+    border-color: var(--primary);
+  }
 }
