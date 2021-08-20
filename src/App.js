@@ -1,6 +1,6 @@
 import './App.scss';
 import Navbar from './layout/Navbar/Navbar';
-import Main from './components/Main';
+import Hero from './layout/Hero/Hero';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
         <Navbar/>
       </header>
       <main>
-        <Main/>
+        <Hero/>
       </main>
     </>
   );

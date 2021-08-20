@@ -12,6 +12,15 @@ const Navbar = () => {
                     Dogs Lovers
                 </li>
             </ul>
+
+            <ul>
+                <li>
+                    <button>Browse All Breeds</button>
+                </li>
+                <li>
+                    <button>Sub.Breeds</button>
+                </li>
+            </ul>
         </nav>
     )
 }
