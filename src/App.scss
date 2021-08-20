@@ -32,7 +32,7 @@ a {
   .box {
     width: 1.3rem;
     height: 1.3rem;
-    border: 1.5px solid black;
+    border: 1.5px solid var(--primary);
     border-radius: 2px;
     margin-right: 0.8rem;
     display: flex;
@@ -44,7 +44,7 @@ a {
 
   .box::after {
     content: "\2714";
-    color: var(--light-darken1);
+    color: white;
     font-size: 1rem;
   }
   > input[type="checkbox"]:checked + .box {

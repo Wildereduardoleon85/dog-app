@@ -1,17 +1,39 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import Sidebar from '../Sidebar';
+import Gallery from '../Gallery';
 import './main.scss';
 
-
 const Main = () => {
-    const [text, setText] = useState('')
+    const [selected, setSelected] = useState([])
+    const [allBreeds, setAllBreeds] = useState([])
+    const [images, setImages] = useState([])
+
+    useEffect(() => {
+        fetchAllBreeds()
+    }, [])
+
+    const fetchAllBreeds = async() => {
+        const url = 'https://dog.ceo/api/breeds/list/all'
+        const res = await axios.get(url)
+        setAllBreeds(res.data.message)
+    }
+
+    const fetchImages = async(text) => {
+        const url = `https://dog.ceo/api/breed/${text}/images`
+        const res = await axios.get(url)
+        setImages(images.concat(res.data.message))
+    }
 
     const handleChange = e => {
         if(e.target.checked === true){
-            setText(e.target.parentElement.textContent)
+            fetchImages(e.target.parentElement.textContent)
         }else{
-            setText('')
-        }
-    } 
+            setImages(images.filter(
+                x => x.split('/')[4] !== e.target.parentElement.textContent
+                ))
+        } 
+    }
 
     return (
         <section className="main">
@@ -22,40 +44,13 @@ const Main = () => {
                     <input type="search" placeholder="Search for Dogs Breeds" />
                     <div>
                         <ul>
-                            <li>
-                                {/* <input type="checkbox" id="check" onChange={handleChange}/>
-                                <label htmlFor="check" >Doberman</label> */}
-                                <label className="checkbox" htmlFor="check">
-                                    <input onChange={handleChange} type="checkbox" id="check" />
-                                    <div className="box"></div>
-                                    Doberman
-                                </label>
-                            </li>
-                            <li>Doberman</li>
-                            <li>Doberman</li>
-                            <li>Doberman</li>
-                            <li>Doberman</li>
-                            <li>Doberman</li>
-                            <li>Doberman</li>
-                            <li>Doberman</li>
-                            <li>Doberman</li>
-                            <li>Doberman</li>
-                            <li>Doberman</li>
+                            {Object.keys(allBreeds).length > 1 && Object.keys(allBreeds).map(item => (
+                                <Sidebar handleChange={handleChange} key={item} item={item} allBreeds={allBreeds}/>
+                            ))}
                         </ul>
                     </div>
                 </div>
-
-                <div className="galery">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+                <Gallery images={images}/>
             </div>
         </section>
     )
