@@ -5,7 +5,6 @@ import Gallery from '../Gallery';
 import './main.scss';
 
 const Main = () => {
-    const [selected, setSelected] = useState([])
     const [allBreeds, setAllBreeds] = useState([])
     const [images, setImages] = useState([])
 
@@ -35,6 +34,22 @@ const Main = () => {
         } 
     }
 
+    const handleChange2 = async e => {
+        const parentText = e.target.parentElement.parentElement.parentElement.children[0].textContent;
+        const innerText = e.target.parentElement.textContent;
+        const joinedText = parentText + '-' + innerText
+        if(e.target.checked === true){
+            const res = await axios.get(`https://dog.ceo/api/breed/${parentText}/images`)
+            const fetchedImages = res.data.message
+            const filteredImages = fetchedImages.filter(x => x.split('/')[4] === joinedText)
+            setImages(images.concat(filteredImages))
+        }else{
+            setImages(images.filter(
+                x => x.split('/')[4] !== joinedText
+                ))
+        } 
+    }
+
     return (
         <section className="main">
             <h1>Dogs Breeds</h1>
@@ -45,7 +60,13 @@ const Main = () => {
                     <div>
                         <ul>
                             {Object.keys(allBreeds).length > 1 && Object.keys(allBreeds).map(item => (
-                                <Sidebar handleChange={handleChange} key={item} item={item} allBreeds={allBreeds}/>
+                                <Sidebar 
+                                    handleChange={handleChange} 
+                                    key={item} 
+                                    item={item} 
+                                    allBreeds={allBreeds}
+                                    handleChange2={handleChange2}
+                                />
                             ))}
                         </ul>
                     </div>

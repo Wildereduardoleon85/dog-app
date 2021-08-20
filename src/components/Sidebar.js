@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Sidebar = ({item, allBreeds, handleChange}) => {
+const Sidebar = ({item, allBreeds, handleChange, handleChange2}) => {
     return (
         <div>
-            <li>
-                <label className="checkbox" htmlFor={item}>
+            <li style={allBreeds[item].length > 0 ? {marginLeft: '30px'}: null}>
+                <label 
+                    style={allBreeds[item].length > 0 ? {fontWeight: 'bold'}: null} 
+                    className="checkbox" htmlFor={item}>
                     <input 
                         onChange={handleChange} 
                         type="checkbox" 
@@ -21,9 +23,9 @@ const Sidebar = ({item, allBreeds, handleChange}) => {
             </li>
             
             {allBreeds[item].length > 0 && allBreeds[item].map(i => (
-                <li key={i} style={{marginLeft: '30px'}}>
-                    <label className="checkbox" htmlFor={i}>
-                        <input type="checkbox" id={i} />
+                <li className="sub-breed" key={`${item}-${i}`}>
+                    <label className="checkbox" htmlFor={`${item}-${i}`}>
+                        <input onChange={handleChange2} type="checkbox" id={`${item}-${i}`} />
                         <div className="box"></div>
                         {i}
                     </label>
