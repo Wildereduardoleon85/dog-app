@@ -46,7 +46,7 @@ a {
 
   .box::after {
     content: "\2714";
-    color: white;
+    color: var(--light-darken1);
     font-size: 1rem;
   }
   > input[type="checkbox"]:checked + .box {

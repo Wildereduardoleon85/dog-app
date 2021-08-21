@@ -1,4 +1,5 @@
 import React from 'react';
+import Loading from '../layout/Loading/Loading';
 
 const Sidebar = ({item, allBreeds, handleChange, handleChange2}) => {
 

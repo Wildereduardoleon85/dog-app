@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Pagination from '../layout/Pagination/Pagination';
 
-const Gallery = ({images}) => {
+const Gallery = ({images, loading}) => {
     const [maxPageNumberLimit, setMaxPageNumberLimit ] = useState(5)
     const [minPageNumberLimit, setMinPageNumberLimit ] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
@@ -35,7 +35,7 @@ const Gallery = ({images}) => {
     return (
         <div className="right">
             <div className="gallery">
-                {currentImages.length > 1 && currentImages.map( i => (
+                {currentImages.length > 0 && currentImages.map( i => (
                     <div key={i}>
                         <img src={i} alt="" />
                     </div>
