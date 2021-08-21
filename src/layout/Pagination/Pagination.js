@@ -20,43 +20,47 @@ const Pagination = (props) => {
         pageNumbers.push(i)
     }
 
+    
     return (
         <nav className="pagination">
-            <ul>
-                <li>
-                    <button 
-                        onClick={handlePrev}
-                        disabled={currentPage === pageNumbers[0] ? true : false}
-                    >
-                        prev
-                    </button>
-                </li>
-            {pageNumbers.map(i => {
-                if(i < maxPageNumberLimit + 1 && i > minPageNumberLimit){
-                    return (
-                        <li key={i}>
-                            <button 
-                                id={i} 
-                                onClick={handlePag} 
-                                className={currentPage === i ? 'active' : null}
-                            >
-                                {i}
-                            </button>
-                        </li>
-                        )
-                }else{
-                    return null
-                }
-            })}
-                <li>
-                    <button 
-                        onClick={handleNext}
-                        disabled={currentPage === pageNumbers[pageNumbers.length - 1] ? true : false}
-                    >
-                        next
-                    </button>
-                </li>
-            </ul>
+            {totalImages > 0 && (
+                <ul>
+                    <li>
+                        <button 
+                            onClick={handlePrev}
+                            disabled={currentPage === pageNumbers[0] ? true : false}
+                        >
+                            Prev
+                        </button>
+                    </li>
+                    {pageNumbers.map(i => {
+                        if(i < maxPageNumberLimit + 1 && i > minPageNumberLimit){
+                            return (
+                                <li key={i}>
+                                    <button 
+                                        id={i} 
+                                        onClick={handlePag} 
+                                        className={currentPage === i ? 'active' : null}
+                                    >
+                                        {i}
+                                    </button>
+                                </li>
+                                )
+                            }else{
+                                return null
+                            }
+                        })}
+                    <li>
+                        <button 
+                            onClick={handleNext}
+                            disabled={currentPage === pageNumbers[pageNumbers.length - 1] ? true : false}
+                        >
+                            Next
+                        </button>
+                    </li>
+                </ul>
+            )}
+             
         </nav>
     )
 }

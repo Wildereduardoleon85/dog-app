@@ -1,16 +1,42 @@
 .pagination {
   padding: 10px;
+  margin-top: 30px;
   ul {
     display: flex;
+    max-width: fit-content;
+    margin: 0 auto;
     li {
       button {
         background-color: var(--light);
-        border: none;
+        border: 1px solid lightgrey;
         margin: 0 5px;
-        padding: 3px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: var(--light-darken1);
+        transition: all 0.3s ease;
+        color: var(--primary);
+      }
+      button:active,
+      .active:active {
+        background-color: var(--primary-lighten2);
+        transition: all 0.3s ease;
+      }
+      button:disabled:hover {
+        background-color: white;
+        color: rgba(16, 16, 16, 0.3);
+        cursor: unset;
       }
       .active {
         background-color: var(--primary);
+        color: white;
+        border: 1px solid var(--primary);
+      }
+      .active:hover {
+        background-color: var(--primary-darken1);
+        color: white;
       }
     }
   }

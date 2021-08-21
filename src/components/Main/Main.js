@@ -8,7 +8,6 @@ const Main = () => {
     const [allBreeds, setAllBreeds] = useState([])
     const [images, setImages] = useState([])
     
-
     useEffect(() => {
         fetchAllBreeds()
     }, [])

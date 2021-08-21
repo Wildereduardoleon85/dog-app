@@ -33,7 +33,7 @@ const Gallery = ({images}) => {
     }
     
     return (
-        <div>
+        <div className="right">
             <div className="gallery">
                 {currentImages.length > 1 && currentImages.map( i => (
                     <div key={i}>
