@@ -7,6 +7,7 @@ import './main.scss';
 const Main = () => {
     const [allBreeds, setAllBreeds] = useState([])
     const [images, setImages] = useState([])
+    
 
     useEffect(() => {
         fetchAllBreeds()
@@ -21,31 +22,31 @@ const Main = () => {
     const fetchImages = async(text) => {
         const url = `https://dog.ceo/api/breed/${text}/images`
         const res = await axios.get(url)
-        setImages(images.concat(res.data.message))
+        setImages(res.data.message.concat(images))
     }
 
     const handleChange = e => {
         if(e.target.checked === true){
-            fetchImages(e.target.parentElement.textContent)
+            fetchImages(e.target.parentElement.textContent.toLowerCase())
         }else{
             setImages(images.filter(
-                x => x.split('/')[4] !== e.target.parentElement.textContent
+                x => x.split('/')[4] !== e.target.parentElement.textContent.toLowerCase()
                 ))
         } 
     }
 
     const handleChange2 = async e => {
-        const parentText = e.target.parentElement.parentElement.parentElement.children[0].textContent;
-        const innerText = e.target.parentElement.textContent;
+        const parentText = e.target.parentElement.parentElement.parentElement.children[0].textContent.toLowerCase();
+        const innerText = e.target.parentElement.textContent.toLowerCase();
         const joinedText = parentText + '-' + innerText
         if(e.target.checked === true){
             const res = await axios.get(`https://dog.ceo/api/breed/${parentText}/images`)
             const fetchedImages = res.data.message
             const filteredImages = fetchedImages.filter(x => x.split('/')[4] === joinedText)
-            setImages(images.concat(filteredImages))
+            setImages(filteredImages.concat(images))
         }else{
             setImages(images.filter(
-                x => x.split('/')[4] !== joinedText
+                x => x.split('/')[4] !== joinedText 
                 ))
         } 
     }

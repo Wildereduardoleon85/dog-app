@@ -1,0 +1,17 @@
+.pagination {
+  padding: 10px;
+  ul {
+    display: flex;
+    li {
+      button {
+        background-color: var(--light);
+        border: none;
+        margin: 0 5px;
+        padding: 3px;
+      }
+      .active {
+        background-color: var(--primary);
+      }
+    }
+  }
+}

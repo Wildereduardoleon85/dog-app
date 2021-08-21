@@ -1,24 +1,31 @@
 import React from 'react';
 
 const Sidebar = ({item, allBreeds, handleChange, handleChange2}) => {
+
+    const capitalize = (str) => {
+        const lower = str.toLowerCase()
+        return str.charAt(0).toUpperCase() + lower.slice(1)
+    } 
+
     return (
         <div>
-            <li style={allBreeds[item].length > 0 ? {marginLeft: '30px'}: null}>
+            <li 
+                style={allBreeds[item].length > 0 ? {marginLeft: '30px'}: null}
+                className="breed"
+            >
                 <label 
-                    style={allBreeds[item].length > 0 ? {fontWeight: 'bold'}: null} 
-                    className="checkbox" htmlFor={item}>
+                    className="checkbox" htmlFor={item} 
+                    style={allBreeds[item].length > 0 ? {pointerEvents: 'none'}: null}
+                >
                     <input 
                         onChange={handleChange} 
                         type="checkbox" 
                         id={item} 
                         style={allBreeds[item].length > 0 ? {display: 'none'}: null}
                     />
-                    <div 
-                        className="box"
-                        style={allBreeds[item].length > 0 ? {display: 'none'} : null}
-                    >
+                    <div className="box" style={allBreeds[item].length > 0 ? {display: 'none'}: null}>
                     </div>
-                    {item}
+                    {capitalize(item)}
                 </label>
             </li>
             
@@ -27,7 +34,7 @@ const Sidebar = ({item, allBreeds, handleChange, handleChange2}) => {
                     <label className="checkbox" htmlFor={`${item}-${i}`}>
                         <input onChange={handleChange2} type="checkbox" id={`${item}-${i}`} />
                         <div className="box"></div>
-                        {i}
+                        {capitalize(i)}
                     </label>
                 </li>
             ))}

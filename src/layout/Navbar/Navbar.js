@@ -3,7 +3,7 @@ import './navbar.scss';
 
 const Navbar = () => {
     return (
-        <nav>
+        <nav className="navbar">
             <ul>
                 <li className="logo">
                     <img src="/img/footprint.svg" alt="footprint" />
@@ -22,7 +22,8 @@ const Navbar = () => {
                 </li>
             </ul>
         </nav>
-    )
+    ) 
 }
 
 export default Navbar
+
