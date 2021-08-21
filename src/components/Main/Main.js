@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from '../Sidebar';
 import Gallery from '../Gallery';
 import Loading from '../../layout/Loading/Loading';
+import SearchInput from '../SearchInput/SearchInput';
 import './main.scss';
 
 const Main = () => {
@@ -64,7 +65,7 @@ const Main = () => {
             <div className="container">
                 <div className="sidebar">
                     <h2>Breeds</h2>
-                    <input type="search" placeholder="Search for Dogs Breeds" />
+                    <SearchInput/>
                     <div className="list">
                         <ul>
                             {Object.keys(allBreeds).length > 1 && Object.keys(allBreeds).map(item => (
