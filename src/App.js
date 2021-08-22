@@ -1,11 +1,12 @@
 import './App.scss';
-import Navbar from './layout/Navbar/Navbar';
-import Hero from './layout/Hero/Hero';
+import Navbar from './components/layout/Navbar/Navbar';
+import Hero from './components/layout/Hero/Hero';
 import Main from './components/Main/Main';
+import MainState from './context/main/MainState';
 
 function App() {
   return (
-    <>
+    <MainState>
       <header>
         <Navbar/>
       </header>
@@ -13,7 +14,7 @@ function App() {
         <Hero/>
         <Main/>
       </main>
-    </>
+    </MainState>
   );
 }
 

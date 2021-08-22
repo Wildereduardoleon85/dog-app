@@ -1,8 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import MainContext from '../../context/main/mainContext';
 import './search-input.scss';
 
-const SearchInput = ({handleSearch}) => {
+const SearchInput = () => {
     const [expand, setExpand] = useState(false)
+
+    const mainContext = useContext(MainContext);
+
+    const {handleSearch} = mainContext
     
     return (
         <div 
@@ -16,7 +21,7 @@ const SearchInput = ({handleSearch}) => {
                 <input 
                     type="search" 
                     placeholder="Search for Breeds..."
-                    onChange={handleSearch}
+                    onChange={(e) => handleSearch(e)}
                 />
             </div>
         </div>

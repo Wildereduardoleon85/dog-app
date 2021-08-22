@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import MainContext from '../context/main/mainContext';
 
-const Sidebar = ({item, handleChange}) => {
+const Sidebar = ({item}) => {
+    const mainContext = useContext(MainContext);
+
+    const {handleChange} = mainContext
 
     const capitalize = (str) => {
         const lower = str.toLowerCase()
@@ -16,7 +20,7 @@ const Sidebar = ({item, handleChange}) => {
                     className="checkbox" htmlFor={item} 
                 >
                     <input 
-                        onChange={handleChange} 
+                        onChange={(e) => handleChange(e)} 
                         type="checkbox" 
                         id={item} 
                     />

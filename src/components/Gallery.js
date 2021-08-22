@@ -1,7 +1,16 @@
-import React, {useState} from 'react';
-import Pagination from '../layout/Pagination/Pagination';
+import React, {useState, useContext} from 'react';
+import MainContext from '../context/main/mainContext';
+import Pagination from '../components/layout/Pagination/Pagination';
 
-const Gallery = ({images, loading}) => {
+const Gallery = () => {
+    const mainContext = useContext(MainContext);
+
+    const {
+        images,
+        loading
+    } = mainContext
+
+
     const [maxPageNumberLimit, setMaxPageNumberLimit ] = useState(5)
     const [minPageNumberLimit, setMinPageNumberLimit ] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
