@@ -12,12 +12,9 @@
     width: 25%;
     padding: 10px 20px;
     background-color: var(--light-darken1);
-    .sub-breed {
-      margin-left: 30px;
-    }
     .list {
       overflow-y: scroll;
-      max-height: 600px;
+      height: 600px;
       margin-top: 20px;
     }
     ul {
