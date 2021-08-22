@@ -1,5 +1,5 @@
 .main {
-  padding: 20px 0;
+  padding: 70px 0;
   .container {
     display: flex;
     padding: 0 30px;
@@ -77,6 +77,7 @@
   .right {
     width: 70%;
     .gallery {
+      margin-top: 40px;
       width: 100%;
       display: flex;
       flex-wrap: wrap;

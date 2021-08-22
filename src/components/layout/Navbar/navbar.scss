@@ -1,47 +1,58 @@
-.navbar {
-  box-shadow: 0px 1px 5px 0px black;
-  padding: 0 80px;
-  display: flex;
-  height: 80px;
-  button {
-    background: none;
-    border: none;
-    outline: none;
-    font-size: 1.1rem;
-    cursor: pointer;
-    font-weight: bold;
-    height: 100%;
-    padding: 0 10px;
-  }
-  button:hover {
-    color: var(--primary);
-    background: var(--light-darken1);
-    transition: all 0.3s ease;
-  }
-  ul {
+header {
+  nav {
+    box-shadow: 0px 1px 5px 0px black;
+    background-color: var(--primary);
+    padding: 0 80px;
     display: flex;
-    align-items: center;
-    .logo {
-      width: 40px;
-      img {
-        width: 100%;
+    height: 80px;
+    position: fixed;
+    width: 100%;
+    transition: all 0.5s ease;
+    z-index: 2;
+    transform: translateY(-120%);
+    button {
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      font-weight: bold;
+      height: 100%;
+      padding: 0 10px;
+      color: white;
+    }
+    button:hover {
+      background: var(--primary-darken1);
+      transition: all 0.3s ease;
+    }
+    ul {
+      display: flex;
+      align-items: center;
+      .logo {
+        width: 40px;
+        img {
+          width: 100%;
+        }
+      }
+    }
+    ul:first-child {
+      li:last-child {
+        font-family: "Rampart One", cursive;
+        font-size: 2rem;
+        color: white;
+        margin-left: 20px;
+      }
+    }
+    ul:last-child {
+      margin-left: auto;
+      li {
+        height: 100%;
+        display: flex;
+        align-items: center;
       }
     }
   }
-  ul:first-child {
-    li:last-child {
-      font-family: "Rampart One", cursive;
-      font-size: 1.5rem;
-      color: var(--primary);
-      margin-left: 20px;
-    }
-  }
-  ul:last-child {
-    margin-left: auto;
-    li {
-      height: 100%;
-      display: flex;
-      align-items: center;
-    }
+  .navbar {
+    transform: translateY(0);
   }
 }

@@ -12,12 +12,13 @@ const Carousel = () => {
             setCarouselImages()
         }, 5000);
         return () => clearInterval(interval);
+        // eslint-disable-next-line
       }, []);
 
     return (
         <div className="carousel">
             <div>
-                <img src={carouselImages} ></img>
+                <img src={carouselImages} alt={carouselImages}></img>
             </div>
         </div>
     )

@@ -37,7 +37,7 @@ const Main = () => {
 
     return (
         <section className="main">
-            <h1>Dogs Breeds</h1>
+            <h1>Image Gallery</h1>
             <div className="container">
                 <div className="sidebar">
                     <div className="buttons">
