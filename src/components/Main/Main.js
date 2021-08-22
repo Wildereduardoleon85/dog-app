@@ -1,10 +1,11 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import MainContext from '../../context/main/mainContext';
 import Sidebar from '../Sidebar';
 import Gallery from '../Gallery';
 import Loading from '../layout/Loading/Loading';
 import SearchInput from '../SearchInput/SearchInput';
 import './main.scss';
+import {capitalize} from '../../utils/Utils';
 
 const Main = () => {
     const mainContext = useContext(MainContext);
@@ -19,8 +20,12 @@ const Main = () => {
         handleSubBreeds,
         showAll,
         showBreeds,
-        showSubBreeds
+        showSubBreeds,
+        breedSelected,
+        clearFilter
     } = mainContext
+
+    const [word, setWord] = useState(['aff'])
     
     
     useEffect(() => {
@@ -54,6 +59,14 @@ const Main = () => {
                         </button>
                     </div>
                     <SearchInput/>
+                    <div className="breed-selected">
+                        {breedSelected.length > 0 && breedSelected.map(item=> (
+                            <button key={item}>
+                                {capitalize(item)} 
+                                <span onClick={(e)=> clearFilter(e)}><i className="fas fa-times-circle"></i></span>
+                            </button>
+                        ))}
+                    </div>
                     <div className="list">
                         <ul>
                             {list.length === 0 ? all.map(item => (

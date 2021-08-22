@@ -15,7 +15,9 @@ import {
     HANDLE_BREEDS,
     HANDLE_SUBBREEDS,
     CLEAR_LIST,
-    FILTER_LIST
+    FILTER_LIST,
+    SET_BREED_SELECTED,
+    CLEAR_FILTER
     } from '../types';
 
 const MainState = props => {
@@ -28,7 +30,9 @@ const MainState = props => {
         images: [],
         showAll: true,
         showBreeds: false,
-        showSubBreeds: false
+        showSubBreeds: false,
+        noResults: false,
+        breedSelected: []
     };
 
     const [state, dispatch] = useReducer(mainReducer, initialState);
@@ -72,6 +76,7 @@ const MainState = props => {
                 return item.includes(text + '-' + subBreed)
             })
             dispatch({type: SET_IMAGES, payload: filtered})
+            dispatch({type: SET_BREED_SELECTED, payload: text + '-' + subBreed})
             dispatch({type: SET_LOADING_OFF})
         }
         if(e.target.checked === true && !subBreed){
@@ -82,6 +87,7 @@ const MainState = props => {
                 return item.split('/')[4] === text
             })
             dispatch({type: SET_IMAGES, payload: filtered})
+            dispatch({type: SET_BREED_SELECTED, payload: text})
             dispatch({type: SET_LOADING_OFF})
         }
         if(e.target.checked === false && !subBreed){
@@ -112,7 +118,6 @@ const MainState = props => {
         dispatch({type: CLEAR_LIST})
     }
 
-
     // Handle filter typing
     const handleSearch = (e) => {
         const text = e.target.value
@@ -120,6 +125,11 @@ const MainState = props => {
             clearList()
         }
         dispatch({type: FILTER_LIST, payload: text})
+    }
+
+    const clearFilter = (e) => {
+        const text = e.target.parentElement.parentElement.textContent.toLowerCase()
+        dispatch({type: CLEAR_FILTER, payload: text})
     }
 
     return (
@@ -140,7 +150,10 @@ const MainState = props => {
                 handleBreeds,
                 handleSubBreeds,
                 clearList,
-                handleSearch
+                handleSearch,
+                noResults: state.noResults,
+                breedSelected: state.breedSelected,
+                clearFilter
             }}
         >
             {props.children}

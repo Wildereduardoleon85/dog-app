@@ -1,15 +1,12 @@
 import React, {useState, useContext} from 'react';
 import MainContext from '../context/main/mainContext';
 import Pagination from '../components/layout/Pagination/Pagination';
+import NoResults from './layout/NoResults/NoResults';
 
 const Gallery = () => {
     const mainContext = useContext(MainContext);
 
-    const {
-        images,
-        loading
-    } = mainContext
-
+    const {images, noResults} = mainContext
 
     const [maxPageNumberLimit, setMaxPageNumberLimit ] = useState(5)
     const [minPageNumberLimit, setMinPageNumberLimit ] = useState(0)
@@ -44,11 +41,13 @@ const Gallery = () => {
     return (
         <div className="right">
             <div className="gallery">
-                {currentImages.length > 0 && currentImages.map( i => (
-                    <div key={i}>
+                {currentImages.length > 0 ? currentImages.map( i => (
+                    <div className="thumbnail" key={i}>
                         <img src={i} alt="" />
                     </div>
-                ))}
+                )) : noResults && (
+                    <NoResults/>
+                )}
             </div>
             <Pagination 
                 totalImages={images.length} 

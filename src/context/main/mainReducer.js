@@ -11,7 +11,9 @@ import {
     HANDLE_BREEDS,
     HANDLE_SUBBREEDS,
     CLEAR_LIST,
-    FILTER_LIST
+    FILTER_LIST,
+    SET_BREED_SELECTED,
+    CLEAR_FILTER
     } from '../types';
 
 
@@ -48,7 +50,10 @@ const mainReducer = (state, action) => {
             images: (state.images.filter(item =>{
                 return !item.includes(action.payload)
                 }  
-            )) 
+            )),
+            breedSelected: state.breedSelected.filter(item=> {
+                return item !== action.payload
+            })
         };
         case CLEAR_SUBBREEDS_IMAGES:
         return{
@@ -56,13 +61,24 @@ const mainReducer = (state, action) => {
             images: (state.images.filter(item =>{
                 return !item.includes(action.payload.text + '-' + action.payload.subBreed)
                 } 
-            )) 
+            )),
+            breedSelected: state.breedSelected.filter(item=> {
+                return item !== action.payload.text + '-' + action.payload.subBreed
+            })
         };
         case SET_IMAGES:
-        return{
-            ...state,
-            images: action.payload.concat(state.images)
-        };
+            if(state.images.length === 0 && action.payload.length === 0){
+                return {
+                    ...state,
+                    noResults: true
+                }
+            }else{
+                return {
+                    ...state,
+                    images: action.payload.concat(state.images),
+                    noResults: false
+                };
+            }
         case HANDLE_ALL:
         return{
             ...state,
@@ -123,6 +139,20 @@ const mainReducer = (state, action) => {
             }else{
                 return state
             }
+        case SET_BREED_SELECTED:
+            return{
+                ...state,
+                breedSelected: [action.payload, ...state.breedSelected]
+            };
+        case CLEAR_FILTER:
+            return{
+                ...state,
+                breedSelected: state.breedSelected.filter(item=> item !== action.payload),
+                images: (state.images.filter(item =>{
+                    return !item.includes(action.payload)
+                    } 
+                )),
+            };
         default:
             return  state;
     } 
