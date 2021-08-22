@@ -13,4 +13,5 @@ export const CLEAR_LIST = 'CLEAR_LIST'
 export const FILTER_LIST = 'FILTER_LIST'
 export const SET_BREED_SELECTED = 'SET_BREED_SELECTED'
 export const CLEAR_FILTER = 'CLEAR_FILTER'
+export const SET_CAROUSEL = 'SET_CAROUSEL'
 

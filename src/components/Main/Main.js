@@ -1,9 +1,11 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import MainContext from '../../context/main/mainContext';
 import Sidebar from '../Sidebar';
 import Gallery from '../Gallery';
+import Carousel from '../Carousel/Carousel';
 import Loading from '../layout/Loading/Loading';
 import SearchInput from '../SearchInput/SearchInput';
+import NoResults from '../layout/NoResults/NoResults';
 import './main.scss';
 import {capitalize} from '../../utils/Utils';
 
@@ -22,10 +24,10 @@ const Main = () => {
         showBreeds,
         showSubBreeds,
         breedSelected,
-        clearFilter
+        clearFilter, 
+        images,
+        noResults
     } = mainContext
-
-    const [word, setWord] = useState(['aff'])
     
     
     useEffect(() => {
@@ -83,7 +85,11 @@ const Main = () => {
                         </ul>
                     </div>
                 </div>
-                {loading ? <Loading/> : <Gallery/>}
+                {   loading ? <Loading/> : 
+                    images.length === 0 && noResults ? <NoResults/> :
+                    images.length === 0 && noResults === false ?  <Carousel/> : 
+                    <Gallery/>
+                }
             </div>
         </section>
     )

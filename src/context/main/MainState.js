@@ -17,7 +17,8 @@ import {
     CLEAR_LIST,
     FILTER_LIST,
     SET_BREED_SELECTED,
-    CLEAR_FILTER
+    CLEAR_FILTER,
+    SET_CAROUSEL
     } from '../types';
 
 const MainState = props => {
@@ -32,7 +33,8 @@ const MainState = props => {
         showBreeds: false,
         showSubBreeds: false,
         noResults: false,
-        breedSelected: []
+        breedSelected: [],
+        carouselImages: []
     };
 
     const [state, dispatch] = useReducer(mainReducer, initialState);
@@ -132,6 +134,13 @@ const MainState = props => {
         dispatch({type: CLEAR_FILTER, payload: text})
     }
 
+    const setCarouselImages = async() => {
+        dispatch({type: SET_LOADING_ON})
+        const res = await axios.get('https://dog.ceo/api/breeds/image/random')
+        dispatch({type: SET_CAROUSEL, payload: res.data.message})
+        dispatch({type: SET_LOADING_OFF})
+    }
+
     return (
         <MainContext.Provider 
             value={{
@@ -153,7 +162,9 @@ const MainState = props => {
                 handleSearch,
                 noResults: state.noResults,
                 breedSelected: state.breedSelected,
-                clearFilter
+                clearFilter,
+                setCarouselImages,
+                carouselImages: state.carouselImages
             }}
         >
             {props.children}

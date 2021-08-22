@@ -13,7 +13,8 @@ import {
     CLEAR_LIST,
     FILTER_LIST,
     SET_BREED_SELECTED,
-    CLEAR_FILTER
+    CLEAR_FILTER,
+    SET_CAROUSEL
     } from '../types';
 
 
@@ -152,6 +153,11 @@ const mainReducer = (state, action) => {
                     return !item.includes(action.payload)
                     } 
                 )),
+            };
+        case SET_CAROUSEL:
+            return{
+                ...state,
+                carouselImages: action.payload
             };
         default:
             return  state;
