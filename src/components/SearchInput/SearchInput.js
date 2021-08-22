@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './search-input.scss';
 
-const SearchInput = () => {
+const SearchInput = ({handleSearch}) => {
     const [expand, setExpand] = useState(false)
     
     return (
@@ -16,6 +16,7 @@ const SearchInput = () => {
                 <input 
                     type="search" 
                     placeholder="Search for Breeds..."
+                    onChange={handleSearch}
                 />
             </div>
         </div>

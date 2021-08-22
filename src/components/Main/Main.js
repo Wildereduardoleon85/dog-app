@@ -84,6 +84,36 @@ const Main = () => {
         setShowSubBreeds(true)
     }
 
+    const clear = () => {
+        if(showAll){
+            setList(all)
+        }
+        if(showBreeds){
+            setList(breeds)
+        }
+        if(showSubBreeds){
+            setList(subBreeds)
+        }
+    }
+
+    const handleSearch = (e) => {
+        if(list.length > 0){
+            const filtered = list.filter(item=>{
+                return item.includes(e.target.value)
+            })
+            setList(filtered)
+        }
+        if(list.length === 0){
+            const filtered = all.filter(item=>{
+                return item.includes(e.target.value)
+            })
+            setList(filtered)
+        }
+        if(e.target.value === ''){
+            clear()
+        }
+    }
+
     return (
         <section className="main">
             <h1>Dogs Breeds</h1>
@@ -94,7 +124,7 @@ const Main = () => {
                         <button className={`button ${showBreeds && 'active'}`} onClick={handleBreeds}>Breeds</button>
                         <button className={`button ${showSubBreeds && 'active'}`} onClick={handleSubBreeds}>Sub-Breeds</button>
                     </div>
-                    <SearchInput />
+                    <SearchInput handleSearch={handleSearch}/>
                     <div className="list">
                         <ul>
                             {list.length === 0 ? all.map(item => (

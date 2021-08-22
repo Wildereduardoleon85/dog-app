@@ -10,8 +10,10 @@
   }
   .sidebar {
     width: 25%;
-    padding: 10px 20px;
+    padding: 10px 30px;
     background-color: var(--light-darken1);
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px 0px grey;
     .list {
       overflow-y: scroll;
       height: 600px;
