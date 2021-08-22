@@ -13,6 +13,9 @@ const Main = () => {
     const [list, setList] = useState([])
     const [images, setImages] = useState([])
     const [loading, setLoading] = useState(false)
+    const [showAll, setShowAll] = useState(true)
+    const [showBreeds, setShowBreeds] = useState(false)
+    const [showSubBreeds, setShowSubBreeds] = useState(false)
     
     useEffect(() => {
         fetchAllBreeds()
@@ -60,15 +63,36 @@ const Main = () => {
         } 
     }
 
+    const handleAll = () => {
+        setList(all)
+        setShowAll(true)
+        setShowBreeds(false)
+        setShowSubBreeds(false)
+    }
+
+    const handleBreeds = () => {
+        setList(breeds)
+        setShowAll(false)
+        setShowBreeds(true)
+        setShowSubBreeds(false)
+    }
+
+    const handleSubBreeds = () => {
+        setList(subBreeds)
+        setShowAll(false)
+        setShowBreeds(false)
+        setShowSubBreeds(true)
+    }
+
     return (
         <section className="main">
             <h1>Dogs Breeds</h1>
             <div className="container">
                 <div className="sidebar">
                     <div className="buttons">
-                        <button onClick={()=> setList(all)}>All</button>
-                        <button onClick={()=> setList(breeds)}>Breeds</button>
-                        <button onClick={()=> setList(subBreeds)}>Sub-Breeds</button>
+                        <button className={`button ${showAll && 'active'}`} onClick={handleAll}>All</button>
+                        <button className={`button ${showBreeds && 'active'}`} onClick={handleBreeds}>Breeds</button>
+                        <button className={`button ${showSubBreeds && 'active'}`} onClick={handleSubBreeds}>Sub-Breeds</button>
                     </div>
                     <SearchInput />
                     <div className="list">
@@ -79,7 +103,7 @@ const Main = () => {
                                     key={item} 
                                     item={item} 
                                 />
-                            )) : list.length > 0 &&  list.map(item => (
+                            )) : list.length > 0 && list.map(item => (
                                 <Sidebar 
                                     handleChange={handleChange} 
                                     key={item} 

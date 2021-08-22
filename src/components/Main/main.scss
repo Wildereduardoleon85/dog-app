@@ -23,6 +23,35 @@
     li {
       line-height: 2rem;
     }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      button {
+        font-weight: bold;
+        font-size: 1rem;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+          background-color: lightgrey;
+          transition: all 0.3s ease;
+        }
+        &:active {
+          background-color: white;
+          transition: all 0.3s ease;
+        }
+      }
+      .active {
+        background-color: var(--primary);
+        color: white;
+        &:hover {
+          background-color: var(--primary-darken1);
+          transition: all 0.3s ease;
+        }
+      }
+    }
   }
   .right {
     width: 70%;

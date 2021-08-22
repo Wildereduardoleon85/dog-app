@@ -30,6 +30,11 @@ a {
   font-size: 1.2rem;
   > input[type="checkbox"] {
     display: none;
+
+    &:checked + .box {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
   }
   .box {
     width: 1.3rem;
@@ -42,15 +47,11 @@ a {
     justify-content: center;
     flex-shrink: 0;
     padding: 1px;
-  }
 
-  .box::after {
-    content: "\2714";
-    color: var(--light-darken1);
-    font-size: 1rem;
-  }
-  > input[type="checkbox"]:checked + .box {
-    background-color: var(--primary);
-    border-color: var(--primary);
+    &::after {
+      content: "\2714";
+      color: var(--light-darken1);
+      font-size: 1rem;
+    }
   }
 }
