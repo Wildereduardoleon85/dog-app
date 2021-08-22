@@ -50,14 +50,38 @@ const Main = () => {
 
     const handleChange = async(e) => {
         const text = e.target.parentElement.textContent.toLowerCase().split('-')[0]
-        if(e.target.checked === true){
+        const subBreed = e.target.parentElement.textContent.toLowerCase().split('-')[1]
+        if(e.target.checked === true && subBreed){
             setLoading(true)
             const res = await axios.get(`https://dog.ceo/api/breed/${text}/images`)
-            setImages(res.data.message.concat(images))
+            const fetchedData = res.data.message
+            const filtered = fetchedData.filter(item=> {
+                return item.includes(text + '-' + subBreed)
+            })
+            setImages(filtered.concat(images))
             setLoading(false)
-        }else{
-            setImages(images.filter(x =>{
-                return !x.includes(text)
+            console.log(text)
+        }
+        if(e.target.checked === true && !subBreed){
+            setLoading(true)
+            const res = await axios.get(`https://dog.ceo/api/breed/${text}/images`)
+            const fetchedData = res.data.message
+            const filtered = fetchedData.filter(item=> {
+                return item.split('/')[4] === text
+            })
+            setImages(filtered.concat(images))
+            setLoading(false)
+            console.log(text)
+        }
+        if(e.target.checked === false && !subBreed){
+            setImages(images.filter(item =>{
+                return !item.includes(text)
+                } 
+            )) 
+        } 
+        if(e.target.checked === false && subBreed){
+            setImages(images.filter(item =>{
+                return !item.includes(text + '-' + subBreed)
                 } 
             )) 
         } 
