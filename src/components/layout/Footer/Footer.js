@@ -19,7 +19,7 @@ const Footer = () => {
                     target="_blank" 
                     rel="noreferrer"
                 >
-                        <i className="fab fa-github"></i>
+                    <i className="fab fa-github"></i>
                 </a>
             </div>
             <p>Created By Wilder León</p>

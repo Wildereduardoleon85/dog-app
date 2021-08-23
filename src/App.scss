@@ -63,3 +63,19 @@ a {
     }
   }
 }
+
+.button-primary {
+  background-color: var(--primary);
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--primary-darken1);
+  }
+  &:active {
+    background-color: var(--light-darken1);
+  }
+}

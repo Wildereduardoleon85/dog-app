@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import MainContext from '../../context/main/mainContext';
 import Sidebar from '../Sidebar';
 import Gallery from '../Gallery';
@@ -10,6 +10,8 @@ import './main.scss';
 import {capitalize} from '../../utils/Utils';
 
 const Main = () => {
+    const [drawer, setDrawer] = useState(false)
+
     const mainContext = useContext(MainContext);
 
     const {
@@ -35,11 +37,25 @@ const Main = () => {
         // eslint-disable-next-line
     }, [])
 
+    const closeDrawer = () => {
+        setDrawer(false)
+    }
+
     return (
         <section id="gallery" className="main">
-            <h1>Image Gallery</h1>
+            <div>
+                <button className="button-primary" onClick={()=> setDrawer(true)}>
+                        <i class="fas fa-filter"></i> Filter
+                </button>
+                <h1>
+                    Image Gallery
+                </h1>
+            </div>
             <div className="container">
-                <div className="sidebar">
+                <div className="sidebar" style={drawer ? {transform: 'translateX(0)'} : null}>
+                    <button className="close" onClick={closeDrawer}>
+                        <i className="fas fa-times"></i>
+                    </button>
                     <div className="buttons">
                         <button 
                             className={`button ${showAll && 'active'}`} 

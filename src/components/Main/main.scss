@@ -1,95 +1,185 @@
 .main {
   padding: 70px 0;
+  > div:first-child {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    button {
+      margin-right: 50px;
+      position: absolute;
+      left: 30px;
+      display: none;
+    }
+  }
   .container {
     display: flex;
+    width: 100%;
     padding: 0 30px;
+    margin: 0 auto;
+    .sidebar {
+      width: 28%;
+      min-width: 350px;
+      margin-top: 30px;
+      max-height: 820px;
+      padding: 10px 30px;
+      background-color: var(--light-darken1);
+      border-radius: 5px;
+      box-shadow: 0px 1px 5px 0px grey;
+      transition: all 0.5s ease;
+      .list {
+        overflow-y: scroll;
+        height: 600px;
+        margin-top: 20px;
+      }
+      ul {
+        margin-top: 10px;
+      }
+      li {
+        line-height: 2rem;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+        button {
+          font-weight: bold;
+          font-size: 1rem;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          &:hover {
+            background-color: lightgrey;
+            transition: all 0.3s ease;
+          }
+          &:active {
+            background-color: white;
+            transition: all 0.3s ease;
+          }
+        }
+        .active {
+          background-color: var(--primary);
+          color: white;
+          &:hover {
+            background-color: var(--primary-darken1);
+            transition: all 0.3s ease;
+          }
+        }
+      }
+      .breed-selected {
+        margin-top: 20px;
+        button {
+          padding: 5px 10px;
+          background-color: white;
+          border: none;
+          margin-right: 10px;
+          margin-bottom: 5px;
+          border-radius: 5px;
+          span {
+            cursor: pointer;
+            margin-left: 0.5rem;
+            i {
+              color: var(--primary);
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+      .close {
+        background: none;
+        border: none;
+        outline: none;
+        color: var(--primary);
+        font-size: 1.5rem;
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        cursor: pointer;
+        display: none;
+        &:hover {
+          color: var(--primary-darken1);
+        }
+      }
+    }
+    .right {
+      width: 72%;
+      .gallery {
+        margin-top: 40px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .thumbnail {
+          width: 200px;
+          height: 200px;
+          margin: 10px;
+          img {
+            max-width: 100%;
+            max-height: 100%;
+          }
+        }
+      }
+    }
   }
   h1 {
     font-size: 3rem;
     text-align: center;
     color: var(--primary-darken3);
   }
-  .sidebar {
-    width: 25%;
-    padding: 10px 30px;
-    background-color: var(--light-darken1);
-    border-radius: 5px;
-    box-shadow: 0px 1px 5px 0px grey;
-    .list {
-      overflow-y: scroll;
-      height: 600px;
-      margin-top: 20px;
-    }
-    ul {
-      margin-top: 10px;
-    }
-    li {
-      line-height: 2rem;
-    }
-    .buttons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 30px;
+}
+
+@media screen and (max-width: 1100px) {
+  .main {
+    > div:first-child {
       button {
-        font-weight: bold;
-        font-size: 1rem;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        &:hover {
-          background-color: lightgrey;
-          transition: all 0.3s ease;
-        }
-        &:active {
-          background-color: white;
-          transition: all 0.3s ease;
-        }
-      }
-      .active {
-        background-color: var(--primary);
-        color: white;
-        &:hover {
-          background-color: var(--primary-darken1);
-          transition: all 0.3s ease;
-        }
+        display: block;
       }
     }
-    .breed-selected {
-      margin-top: 20px;
-      button {
-        padding: 5px 10px;
-        background-color: white;
-        border: none;
-        margin-right: 10px;
-        margin-bottom: 5px;
-        border-radius: 5px;
-        span {
-          cursor: pointer;
-          margin-left: 0.5rem;
-          i {
-            color: var(--primary);
-            font-size: 0.8rem;
-          }
+    .container {
+      position: relative;
+      .sidebar {
+        transform: translateX(-110%);
+        min-width: none;
+        position: fixed;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        left: 0;
+        top: 70px;
+        z-index: 2;
+        .close {
+          display: inline-block;
         }
+      }
+      .right {
+        width: 100%;
+        position: relative;
+        z-index: 1;
       }
     }
   }
-  .right {
-    width: 70%;
-    .gallery {
-      margin-top: 40px;
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      .thumbnail {
-        width: 200px;
-        height: 200px;
-        margin: 10px;
-        img {
-          max-width: 100%;
-          max-height: 100%;
+}
+
+@media screen and (max-width: 622px) {
+  html {
+    font-size: 12px;
+  }
+  .main {
+    > div:first-child {
+      flex-direction: column;
+      button {
+        position: static;
+        margin-right: auto;
+        margin-left: 30px;
+        margin-bottom: 20px;
+      }
+    }
+    .container {
+      .right {
+        .gallery {
+          margin-top: 60px;
         }
       }
     }
