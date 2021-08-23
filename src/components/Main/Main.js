@@ -36,7 +36,7 @@ const Main = () => {
     }, [])
 
     return (
-        <section className="main">
+        <section id="gallery" className="main">
             <h1>Image Gallery</h1>
             <div className="container">
                 <div className="sidebar">

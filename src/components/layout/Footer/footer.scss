@@ -1,0 +1,27 @@
+.footer {
+  margin-top: 110px;
+  background-color: var(--primary);
+  padding: 50px 0;
+  width: 100%;
+  div {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    a {
+      font-size: 30px;
+      padding: 0 20px;
+      transition: all 0.5s ease;
+      color: white;
+      &:hover {
+        color: var(--light-darken3);
+      }
+    }
+  }
+  p {
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+  }
+}

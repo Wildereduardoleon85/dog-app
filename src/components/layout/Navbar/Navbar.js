@@ -10,6 +10,7 @@ const Navbar = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }
+        // eslint-disable-next-line
     }, [scrollPos])
 
     const handleScroll = ()=>{
@@ -34,10 +35,10 @@ const Navbar = () => {
 
             <ul>
                 <li>
-                    <button>Home</button>
+                    <a href="#home">Home</a>
                 </li>
                 <li>
-                    <button>Image Gallery</button>
+                    <a href="#gallery">Image Gallery</a>
                 </li>
             </ul>
         </nav>

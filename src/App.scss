@@ -8,11 +8,19 @@
   font-family: "Bitter", serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --primary: #01bd56;
   --primary-darken1: #00aa4d;
+  --primary-darken2: #009744;
+  --primary-darken3: #00843c;
   --primary-lighten2: #66d799;
   --light-darken1: #f0f0f0;
+  --light-darken2: #e5e5e5;
+  --light-darken3: #cccccc;
 }
 
 ul {
