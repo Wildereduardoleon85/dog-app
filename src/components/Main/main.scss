@@ -1,5 +1,5 @@
 .main {
-  padding: 70px 0;
+  padding-top: 70px;
   > div:first-child {
     display: flex;
     flex-direction: row;
@@ -79,6 +79,7 @@
           margin-right: 10px;
           margin-bottom: 5px;
           border-radius: 5px;
+          box-shadow: 0.5px 0.5px 3px 0.5px grey;
           span {
             cursor: pointer;
             margin-left: 0.5rem;
