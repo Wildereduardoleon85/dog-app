@@ -45,7 +45,7 @@ const Main = () => {
         <section id="gallery" className="main">
             <div>
                 <button className="button-primary" onClick={()=> setDrawer(true)}>
-                        <i class="fas fa-filter"></i> Filter
+                        <i className="fas fa-filter"></i> Filter
                 </button>
                 <h1>
                     Image Gallery

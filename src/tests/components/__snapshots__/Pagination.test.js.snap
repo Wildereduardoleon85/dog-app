@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests in <Pagination/> Should show the component correctly 1`] = `
+<nav
+  className="pagination"
+>
+  <ul>
+    <li>
+      <button
+        disabled={false}
+        id="prevButton"
+        onClick={[Function]}
+      >
+        Prev
+      </button>
+    </li>
+    <li>
+      <button
+        disabled={false}
+        onClick={[Function]}
+      >
+        Next
+      </button>
+    </li>
+  </ul>
+</nav>
+`;

@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import PropTypes from 'prop-types';
 import MainContext from '../context/main/mainContext';
 import {capitalize} from '../utils/Utils';
 
@@ -6,7 +7,6 @@ const Sidebar = ({item}) => {
     const mainContext = useContext(MainContext);
 
     const {handleChange, breedSelected} = mainContext
-
 
     return (
         <div>
@@ -29,6 +29,10 @@ const Sidebar = ({item}) => {
             </li>
         </div>
     )
+}
+
+Sidebar.propTypes = {
+    item: PropTypes.string.isRequired
 }
 
 export default Sidebar

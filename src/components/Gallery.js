@@ -43,7 +43,7 @@ const Gallery = () => {
             <div className="gallery">
                 {currentImages.length > 0 && currentImages.map( i => (
                     <div className="thumbnail" key={i}>
-                        <img src={i} alt="" />
+                        <img src={i} alt={i} />
                     </div>
                 ))}
             </div>

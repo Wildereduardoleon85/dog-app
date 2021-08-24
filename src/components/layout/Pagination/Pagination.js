@@ -1,5 +1,7 @@
 import React from 'react';
 import './pagination.scss';
+import PropTypes from 'prop-types'
+
 
 const Pagination = (props) => {
 
@@ -27,6 +29,7 @@ const Pagination = (props) => {
                 <ul>
                     <li>
                         <button 
+                            id="prevButton"
                             onClick={handlePrev}
                             disabled={currentPage === pageNumbers[0] ? true : false}
                         >
@@ -63,6 +66,17 @@ const Pagination = (props) => {
              
         </nav>
     )
+}
+
+Pagination.propTypes = {
+    totalImages: PropTypes.number.isRequired,
+    imagesPerPage: PropTypes.number.isRequired,
+    maxPageNumberLimit: PropTypes.number.isRequired,
+    minPageNumberLimit: PropTypes.number.isRequired,
+    handlePag: PropTypes.func.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    handleNext: PropTypes.func.isRequired,
+    handlePrev: PropTypes.func.isRequired
 }
 
 export default Pagination
