@@ -60,10 +60,41 @@
   }
 }
 
-@media screen and (max-width: 622px) {
+@media screen and (max-width: 712px) {
   .carousel {
-    div {
-      width: 100%;
+    .main-container {
+      width: 400px;
+      .image-container {
+        width: 350px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 522px) {
+  .carousel {
+    .btn-next {
+      position: absolute;
+      top: 90px;
+      left: 0;
+      z-index: 2;
+    }
+    .btn-prev {
+      position: absolute;
+      top: 90px;
+      right: 0;
+      z-index: 2;
+    }
+  }
+}
+
+@media screen and (max-width: 432px) {
+  .carousel {
+    .main-container {
+      width: 300px;
+      .image-container {
+        width: 250px;
+      }
     }
   }
 }

@@ -4,7 +4,7 @@ import {capitalize} from '../../utils/utils';
 import './carousel.scss';
 
 const Carousel = () => {
-    const [images, setImages] = useState(carouselImages);
+    const images = carouselImages
     const [index, setIndex] = useState(0);
 
     useEffect(()=> {
@@ -60,7 +60,7 @@ const Carousel = () => {
                     )
                 })}
             </div>
-            <button onClick={handleNext} className="button-primary btn-next" >
+            <button onClick={handleNext} className="button-primary btn-prev" >
                 <i className="fas fa-chevron-right"></i>
             </button>
         </div>
