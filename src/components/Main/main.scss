@@ -186,3 +186,11 @@
     }
   }
 }
+
+@media screen and (max-width: 400px) {
+  .main {
+    .container {
+      padding: 0 0;
+    }
+  }
+}
