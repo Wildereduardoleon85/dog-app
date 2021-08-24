@@ -1,6 +1,6 @@
 import React from 'react';
 import './footer.scss';
-import {sendMail} from '../../../utils/Utils';
+import {sendMail} from '../../../utils/utils';
 
 const Footer = () => {
     return (

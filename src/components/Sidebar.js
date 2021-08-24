@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import MainContext from '../context/main/mainContext';
-import {capitalize} from '../utils/Utils';
+import {capitalize} from '../utils/utils';
 
 const Sidebar = ({item}) => {
     const mainContext = useContext(MainContext);

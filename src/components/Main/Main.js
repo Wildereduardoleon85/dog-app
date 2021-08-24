@@ -7,7 +7,7 @@ import Loading from '../layout/Loading/Loading';
 import SearchInput from '../SearchInput/SearchInput';
 import NoResults from '../layout/NoResults/NoResults';
 import './main.scss';
-import {capitalize} from '../../utils/Utils';
+import {capitalize} from '../../utils/utils';
 
 const Main = () => {
     const [drawer, setDrawer] = useState(false)
