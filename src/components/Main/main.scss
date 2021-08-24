@@ -63,6 +63,7 @@
         .active {
           background-color: var(--primary);
           color: white;
+          box-shadow: 0.5px 0.5px 3px 0.5px grey;
           &:hover {
             background-color: var(--primary-darken1);
             transition: all 0.3s ease;

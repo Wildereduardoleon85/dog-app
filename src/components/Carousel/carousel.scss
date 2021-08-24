@@ -1,26 +1,56 @@
 .carousel {
-  width: 70%;
-  div {
-    width: 500px;
+  --large-width: 650px;
+  width: var(--large-width);
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  .main-container {
     margin: 100px auto 0 auto;
+    width: calc(var(--large-width) * 0.85);
+    height: calc(var(--large-width) * 0.7);
+    position: relative;
+    display: flex;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    img {
-      width: 100%;
-      animation-name: fade_in;
-      animation-duration: 1s;
-      animation-timing-function: ease;
+    .image-container {
+      width: calc(var(--large-width) * 0.77);
+      margin: 0 auto;
+      flex-shrink: 0;
+      margin: 0 20px;
+      position: absolute;
+      opacity: 0;
+      transition: all 0.5s ease;
+      .image {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        box-shadow: 2px 2px 8px 1px rgb(71, 71, 71);
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+      }
+      h2 {
+        text-align: center;
+        margin-top: 1.5rem;
+      }
     }
-  }
-}
-
-@keyframes fade_in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+    .active {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    .prev {
+      transform: translateX(-110%);
+    }
+    .next {
+      transform: translateX(110%);
+    }
   }
 }
 
