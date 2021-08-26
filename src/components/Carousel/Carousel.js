@@ -21,6 +21,7 @@ const Carousel = () => {
             handleNext()
         }, 4000);
         return ()=> clearInterval(slider)
+        // eslint-disable-next-line
     }, [index])
 
     const handleNext = () => {
